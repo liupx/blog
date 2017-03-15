@@ -247,4 +247,4 @@ public class UserController {
 ##### 启动Spring Boot，访问：[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 > 事实上,可以使用 Swagger2 进行 RESTful API 的测试。如下图：
 
-![]()
+![spring-boot-first-pj-swagger-ui.png](https://raw.githubusercontent.com/liupx/img/master/spring-boot-first-pj-swagger-ui.png)
