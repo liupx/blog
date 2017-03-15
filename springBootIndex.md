@@ -10,8 +10,8 @@ tags: [Java,SpringBoot]
 
 1. 入门
 	1. [SpringBoot简介](http://www.liupx.me/springBootIntroduction.html "http://www.liupx.me/springBootIntroduction.html")
-	2. [开发环境与配置](http://www.liupx.me/springBootDevEnvAndConf.md "http://www.liupx.me/springBootDevEnvAndConf.md")
-	3. [SpringBoot入门项目](http://www.liupx.me/springBootFirstProject.md "http://www.liupx.me/springBootFirstProject.md")
+	2. [开发环境与配置](http://www.liupx.me/springBootDevEnvAndConf.html "http://www.liupx.me/springBootDevEnvAndConf.html")
+	3. [SpringBoot入门项目](http://www.liupx.me/springBootFirstProject.html "http://www.liupx.me/springBootFirstProject.html")
 4. Web层
 	1. [静态资源](http://www.liupx.me "http://www.liupx.me")
 5. 数据访问层
