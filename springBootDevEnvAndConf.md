@@ -11,6 +11,7 @@ tags: [Java,SpringBoot]
 3. 项目构建工具：Maven 或者 Gradle （本文使用 Maven）
 4. 官方在线构建项目：[地址](http://start.spring.io/) 
 	1. 本文使用的SpringBoot版本为1.5.2 [官方文档地址](http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/html/)
+
 #### Spring Boot命令行界面
 1. Spring Boot提供了命令行界面（Command Line Interface, CLI），可以用来运行和测试Spring Boot应用
 2. 安装： 
