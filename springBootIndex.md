@@ -7,7 +7,6 @@ tags: [Java,SpringBoot]
 ### SpringBoot学习目录
 
 ----------
-test git global user name and email
 1. 入门
 	1. [SpringBoot简介](http://www.liupx.me/springBootIntroduction.html "http://www.liupx.me/springBootIntroduction.html")
 	2. [开发环境与配置](http://www.liupx.me/springBootDevEnvAndConf.html "http://www.liupx.me/springBootDevEnvAndConf.html")
