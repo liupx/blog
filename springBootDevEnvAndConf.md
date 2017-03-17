@@ -1,6 +1,6 @@
 ---
 title: SpringBoot开发环境与配置
-date: 2017-03-15 12:00:00
+date: 2017-03-15 12:00:02
 categories: "SpringBoot"
 tags: [Java,SpringBoot]
 ---

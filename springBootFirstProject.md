@@ -1,6 +1,6 @@
 ---
 title: SpringBoot入门项目
-date: 2017-03-15 12:00:00
+date: 2017-03-15 12:00:03
 categories: "SpringBoot"
 tags: [Java,SpringBoot]
 ---
@@ -136,7 +136,7 @@ public class UserController {
     <version>2.2.2</version>
 </dependency>
 ```
-#####创建Swagger2配置类
+##### 创建Swagger2配置类
 在Application.java同级创建Swagger2的配置类Swagger2。
 ```java
 package com.liupx;
@@ -283,8 +283,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 - update
 	- 加载hibernate自动更新数据库结构
 
-**出处**
->这个是Hibernate的一个配置属性。<br>
+**这个是Hibernate的一个配置属性。出处**
 > **在 SessionFactory 创建时，自动检查数据库结构，或者将数据库 schema 的 DDL 导出到数据库。使用 create-drop 时，在显式关闭 SessionFactory 时，将删除掉数据库 schema。
 例如：validate | update | create | create-drop**<br>
 详情见：[Hibernate文档(3.5)](https://docs.jboss.org/hibernate/orm/3.5/reference/zh-CN/html/session-configuration.html)
