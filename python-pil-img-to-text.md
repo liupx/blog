@@ -4,6 +4,5 @@ date: 2017-03-17 16:00:00
 categories: "Python"
 tags: [Python,PIL]
 --- 
-
-tet
+![liupx-text.png](https://raw.githubusercontent.com/liupx/img/master/liupx-text.png)
 
