@@ -8,17 +8,17 @@ tags: [Java,SpringWeb]
 ### ContextLoaderListener详解
 #### 背景介绍 
 Tomcat容器中的Java Web应用启动时，首先根据web.xml中配置的监听器ContextLoaderListener配置应用上下文(Application Context)。其中ContextLoaderListener究竟做了哪些工作；加载配置上下文时分为哪些阶段；在细节上又有哪些需要注意的地方？本文尝试从Spring源码的角度进行探究。
-> 本文源码来自`spring-web-4.3.4.RELEASE.jar`。更多详细信息可参考spring文档:[Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
+> 本文源码来自 `spring-web-4.3.4.RELEASE.jar` 。更多详细信息可参考spring文档 : [Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
 
 #### 创建、初始化与销毁
-ContextLoaderListener在`web.xml`文件的`<listener>`标签中创建。形如：
+ContextLoaderListener在 `web.xml` 文件的 `<listener>` 标签中创建。形如：
 ```xml
  <!-- Creates the Spring Container shared by all Servlets and Filters -->
  <listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  </listener>
 ```
-> Web容器(e.g Tomcat)启动时扫描web.xml文件，根据`<listener>`节点和随后的`<context-params>`节点找到上下文类型(contextClass)和上下文配置路径(contextConfigLocation)。随后的ContextLoaderListener的无参构造方法根据将根据这两个参数创建Web应用程序上下文。<br>其中，contextClass未找到时创建默认的XmlWebApplicationContext。<br>源码出处如下：
+> Web容器(e.g Tomcat)启动时扫描web.xml文件，根据 `<listener>` 节点和随后的 `<context-params>` 节点找到上下文类型(contextClass)和上下文配置路径(contextConfigLocation)。随后的ContextLoaderListener的无参构造方法根据将根据这两个参数创建Web应用程序上下文。<br>其中，contextClass未找到时创建默认的XmlWebApplicationContext。<br>源码出处如下：
 
 ```java
  protected Class<?> determineContextClass(ServletContext servletContext) {
@@ -40,7 +40,7 @@ ContextLoaderListener在`web.xml`文件的`<listener>`标签中创建。形如�
         }
     }
 ```
-contextConfigLocation用于设置applicatioContext*.xml文件的路径。不设置时默认为/WEB-INF/applicationContext.xml。多个上下文配置文件可用逗号或者空格分开。形如：
+contextConfigLocation用于设置applicatioContext*.xml文件的路径。不设置时默认为 `/WEB-INF/applicationContext.xml` 。多个上下文配置文件可用逗号或者空格分开。形如：
 
 ```xml
 <!-- The definition of the Root Spring Container shared by all Servlets
@@ -62,7 +62,7 @@ contextConfigLocation用于设置applicatioContext*.xml文件的路径。不设�
 下文将首先从应用上下文的初始化过程进行探究。
 
 #### 初始化
-ContextLoaderListener继承ContextLoader类，其contextInitialized()实际工作由父类中initWebApplicationContext()完成。
+ContextLoaderListener继承ContextLoader类，其 `contextInitialized()` 实际工作由父类中 `initWebApplicationContext()` 完成。
 
 ```java
 
@@ -98,11 +98,10 @@ ContextLoaderListener继承ContextLoader类，其contextInitialized()实际工�
                 } else if(err1 != null) {
                     currentContextPerThread.put(err1, this.context);
                 }
-
-				/*省略无关代码*/
+                /*省略无关代码*/
                 return this.context;
             } catch /*省略无关代码*/
         }
     }
 ```
-其中，主要的逻辑在`try{}`部分。可知，当上下文为空时，创建Web应用上下文。创建的上下文类型必须是ConfigurableWebApplicationContext的实例。
+其中，主要的逻辑在 `try{}` 部分。可知，当上下文为空时，创建Web应用上下文。创建的上下文类型必须是 `ConfigurableWebApplicationContext` 的实例。
