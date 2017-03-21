@@ -12,7 +12,7 @@ Tomcat容器中的Java Web应用启动时，首先根据web.xml中配置的监�
 ### ContextLoaderListener基本信息
 #### 继承关系
  `ContextLoaderListener` 继承了 `ContextLoader` ，并且实现了 `ServletContextListener` 接口。
-![ContextLoaderListener01.png](https://raw.githubusercontent.com/liupx/img/master/ContextLoaderListener01.png)
+![ContextLoaderListener01.png](https://raw.githubusercontent.com/liupx/img/master/springWebContextLoaderListener01.png)
 #### 成员方法
 两个成员方法：
 - contextInitialized() : 初始化Web应用上下文
@@ -166,4 +166,4 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
         wac.refresh();
     }
 ``` 
-首先是主要是设置一些基本信息：contextId,spring配置文件路径(contextConfigLocation,上文中提到的web.xml中配置[contextConfigLocation](#contextConfigLocation) --[test](#调用入口与配置))
+首先是主要是设置一些基本信息：contextId,spring配置文件路径(contextConfigLocation,上文中提到的web.xml中配置[contextConfigLocation](#contextConfigLocation))
