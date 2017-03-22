@@ -8,7 +8,7 @@ tags: [Java,SpringWeb]
 ## ContextLoaderListener详解
 ### 背景介绍 
 Tomcat容器中的Java Web应用启动时，首先根据web.xml中配置的监听器ContextLoaderListener配置应用上下文(Application Context)。其中ContextLoaderListener究竟做了哪些工作；加载配置上下文时分为哪些阶段；在细节上又有哪些需要注意的地方？本文尝试从Spring源码的角度进行探究。
-> 本文源码来自 `spring-framework-4.3.4.RELEASE` [zip](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.zip)[tar.gz](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.tar.gz) 。更多详细信息可参考spring文档 : [Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
+> 本文源码来自 `spring-framework-4.3.4.RELEASE`  **[zip](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.zip)**  **[tar.gz](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.tar.gz)** 。更多详细信息可参考spring文档 : [Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
 
 ### ContextLoaderListener基本信息
 #### 继承关系
