@@ -8,7 +8,8 @@ tags: [Java,SpringWeb]
 ## ContextLoaderListener详解
 ### 背景介绍 
 Tomcat容器中的Java Web应用启动时，首先根据web.xml中配置的监听器ContextLoaderListener配置应用上下文(Application Context)。其中ContextLoaderListener究竟做了哪些工作；加载配置上下文时分为哪些阶段；在细节上又有哪些需要注意的地方？本文尝试从Spring源码的角度进行探究。
-> 本文源码来自 `spring-web-4.3.4.RELEASE.jar` 。更多详细信息可参考spring文档 : [Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
+> 本文源码来自 `spring-framework-4.3.4.RELEASE` [zip](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.zip)[tar.gz](https://github.com/spring-projects/spring-framework/archive/v4.3.4.RELEASE.tar.gz) 。更多详细信息可参考spring文档 : [Spring 4.3.4RELEASE API:ContextLoaderListener](https://docs.spring.io/spring/docs/4.3.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html)
+
 ### ContextLoaderListener基本信息
 #### 继承关系
  `ContextLoaderListener` 继承了 `ContextLoader` ，并且实现了 `ServletContextListener` 接口。
@@ -53,7 +54,6 @@ ContextLoaderListener在 `web.xml` 文件的 `<listener>` 标签中创建。形�
     }
 ```
 2. <a id="contextConfigLocation">contextConfigLocation</a>用于设置applicatioContext*.xml文件的路径。不设置时默认为 `/WEB-INF/applicationContext.xml` 。多个上下文配置文件可用逗号或者空格分开。形如：
-
 ```xml
 <!-- The definition of the Root Spring Container shared by all Servlets
         and Filters -->
@@ -111,6 +111,7 @@ ContextLoaderListener继承ContextLoader类，其初始化过程 `contextInitial
         }
     }
 ```
+
 ##### createWebApplicationContext()
 主要的逻辑在 `try{}` 部分。可知，当上下文为空时，调用 `createWebApplicationContext()` 创建Web应用上下文。
 <br> 代码如下：
@@ -135,6 +136,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 
 ```
 - 创建的上下文类型必须是 `ConfigurableWebApplicationContext` 的实例。
+
 ##### configureAndRefreshWebApplicationContext() 
 创建完WebApplicationContext之后，就要调用 `configureAndRefreshWebApplicationContext()` 进行配置。
 <br>通常是对刚刚创建的 `XmlWebApplicationContext` 进行初始化。
@@ -166,4 +168,6 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
         wac.refresh();
     }
 ``` 
-首先是主要是设置一些基本信息：contextId,spring配置文件路径(contextConfigLocation,上文中提到的web.xml中配置[contextConfigLocation](#contextConfigLocation))
+首先是主要是设置一些基本信息：contextId,spring配置文件路径(contextConfigLocation[见上文](#contextConfigLocation)),设置环境，自定义上下文。然后才是重点工作： `wac.refresh()`。
+
+#### 核心方法refresh()
